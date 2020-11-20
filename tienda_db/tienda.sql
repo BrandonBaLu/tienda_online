@@ -21,7 +21,6 @@ create table venta(
        serie_comprobante varchar(7) null,
        num_comprobante varchar (10) not null,
        fecha_hora datetime not null,
-       impuesto decimal (4,2) not null,
        total decimal (11,2) not null,
        estado varchar(20) not null,
     
@@ -31,10 +30,9 @@ create table venta(
 create table detalle_venta(
        iddetalle_venta integer primary key identity,
        idventa integer not null,
-       idarticulo integer not null,
+       idproducto integer not null,
        cantidad integer not null,
        precio decimal(11,2) not null,
-       descuento decimal(11,2) not null,
        FOREIGN KEY (idventa) REFERENCES venta (idventa) ON DELETE CASCADE,
        FOREIGN KEY (id_producto) REFERENCES producto (id_producto)
 );
