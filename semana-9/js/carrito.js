@@ -27,7 +27,7 @@ function insertar(){
 function limpiar(){
   $("#comment").empty();
   $("#cantidad_product").val(" ");
-  $("#totalCompra").val('0');
+   $("#totalCompra").val('0');
   $("#producto").val("0");
   $("#pago").val(" ")
 }
