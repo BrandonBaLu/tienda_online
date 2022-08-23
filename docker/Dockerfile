@@ -10,3 +10,5 @@ RUN apt-get install php8.0-common php8.0-sqlite3  php8.0-xml php8.0-curl php8.0-
 RUN apt-get install php8.0-fpm libapache2-mod-fcgid -y
 RUN apt install sqlite3 -y
 RUN apt-get install php-sqlite3 -y
+
+WORKDIR /home/tienda_online/
