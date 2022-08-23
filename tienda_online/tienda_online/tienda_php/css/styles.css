@@ -1,0 +1,40 @@
+.stiloslabel{
+  color: rgb(127, 178, 255);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-style: bold;
+  width: 100%;
+  text-align: center;
+}
+.stiloslabel1{
+  color: rgb(127, 178, 255);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-style: bold;
+  width: 50%;
+}
+
+.campodeshabilitado{
+
+  pointer-events: none;
+  background: #dddddd;
+}
+
+.stiloslabel3{
+  width: 30%;
+}
+
+.stiloslabel4{
+  color: rgb(127, 178, 255);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-style: bold;
+  width: 100%;
+  text-align: center;
+}
+
+
+.stiloslabel5{
+  color: rgb(127, 178, 255);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-style: bold;
+  width: 30%;
+  text-align: center;
+}
