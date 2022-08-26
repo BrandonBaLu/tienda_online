@@ -2,16 +2,16 @@
 
     $id_producto = $_GET["id_producto"];
 
-    $db = new SQLite3("../sql/tienda.db");
+    include '../templates/conexion.php';
 
     $resultado = $db->query("SELECT * from producto where id_producto='$id_producto';");
 
     while ($row = $resultado->fetchArray()) {
-        $id_producto = $row["id_producto"];
-        $nombre = $row["producto"];
-        $precio_venta = $row["precio_venta"];
-        $existencias = $row["existencias"];
-        $descripcion = $row["descripcion"];
+        $id_producto    = $row["id_producto"];
+        $nombre         = $row["producto"];
+        $precio_venta   = $row["precio_venta"];
+        $existencias    = $row["existencias"];
+        $descripcion    = $row["descripcion"];
     }
   
 

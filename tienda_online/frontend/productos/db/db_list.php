@@ -1,5 +1,5 @@
 <?php
-    $db = new SQLite3("../sql/tienda.db");
+    $db = new SQLite3("../../sql/tienda.db");
 
     $resultado = $db->query("SELECT * from producto;");
 

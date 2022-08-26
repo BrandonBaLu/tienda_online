@@ -1,13 +1,13 @@
 function insertar(){
-  var cantidad= $("#cantidad_product").val();
-  var nombreProducto = $("#producto option:selected").text();
-  var precio=$("#producto").val();
-  var carrito = $("#comment").val();
-  var idProducto = $("#producto option:selected").data("id");
-  var producto= $("#producto").val();
+  var cantidad        = $("#cantidad_product").val();
+  var nombreProducto  = $("#producto option:selected").text();
+  var precio          = $("#producto").val();
+  var carrito         = $("#comment").val();
+  var idProducto      = $("#producto option:selected").data("id");
+  var producto        = $("#producto").val();
   
   if(cantidad<10 & cantidad >0 &  precio >0){
-    $("#comment").text(carrito +cantidad + "\t"+nombreProducto +  "\t$" + precio + "\t$"+ parseFloat(cantidad)*parseFloat(precio)+"\n");
+    $("#comment").text(carrito + cantidad + "\t" + nombreProducto +  "\t$" + precio + "\t$"+ parseFloat(cantidad)*parseFloat(precio)+"\n");
     var idProductos = $("#idProductos").val();
     $("#idProductos").val(idProductos + idProducto + ":" + cantidad + ";");
     llenaTotal(parseFloat(cantidad)* parseFloat(precio));
@@ -39,13 +39,13 @@ function limpiar(){
 
 function llenaTotal(costo){
   var totalActual = $("#totalCompra").val();
-  var totalFinal = parseFloat(totalActual)+parseFloat(costo);
+  var totalFinal  = parseFloat(totalActual)+parseFloat(costo);
   $("#totalCompra").val(totalFinal);
 }
 
 function validateForm() {
-  var x = document.forms["tienda"]["pago"].value;
-  var pago = $("#pago").val()
+  var x     = document.forms["tienda"]["pago"].value;
+  var pago  = $("#pago").val()
   if (x == "") {
     Swal.fire("Error","No has ingresado el pago", 'error' );
     return false;
