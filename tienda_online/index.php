@@ -65,7 +65,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php"><i class="fa fa-fw fa-home"></i> Home</a>
+                        <a href="../index.php" class="nav-item nav-link active"><i class="fa fa-fw fa-home"></i>Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../frontend/templates/contacto.php"><i class="fa fa-fw fa-user"></i> Contáctanos</a>
@@ -120,7 +120,7 @@
                             <h6 class="card-subtitle mb-2 text-muted">Precio: $' . htmlspecialchars($precio_venta) . '</h6>
                             <p class="card-text">' . htmlspecialchars($descripcion) . '</p>
                             <p class="card-text"><strong>Existencias:</strong> ' . htmlspecialchars($existencias) . '</p>
-                            <a href="producto.php?id=' . htmlspecialchars($id_producto) . '" class="btn btn-primary">Ver más</a>
+                            <a href="../frontend/templates/producto.php?id_producto=' . htmlspecialchars($id_producto) . '" class="btn btn-primary">Ver más</a>
                         </div>
                     </div>
                 </div>
