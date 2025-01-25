@@ -43,6 +43,12 @@
             margin-top: 20px;
             text-align: center;
         }
+        .card-img-top {
+            max-height: 200px;
+            object-fit: cover;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
     </style>
 </head>
 <body>
@@ -89,7 +95,7 @@
         <div class="row">
             <?php
             // Conectar a la base de datos SQLite
-            $db = new SQLite3('./backend/sql/tienda.db');
+            $db = new SQLite3('./backend/sql/tienda_c.db');
 
             // Realizar la consulta para obtener todos los productos
             $resultado = $db->query('SELECT * FROM producto;');
@@ -102,11 +108,12 @@
                     $precio_venta = $row['precio_venta'];
                     $existencias = $row['existencias'];
                     $descripcion = $row['descripcion'];
-
+                    $ruta_imagen = $row['ruta_imagen']; // Ruta de la imagen
                     // Crear una tarjeta para cada producto
                     echo '
                 <div class="col-md-4 mb-4">
                     <div class="card h-100">
+                        <img src="' . htmlspecialchars($ruta_imagen) . '" class="card-img-top" alt="' . htmlspecialchars($nombre) . '">
                         <div class="card-body">
                             <h5 class="card-title">' . htmlspecialchars($nombre) . '</h5>
                             <h6 class="card-subtitle mb-2 text-muted">Precio: $' . htmlspecialchars($precio_venta) . '</h6>
