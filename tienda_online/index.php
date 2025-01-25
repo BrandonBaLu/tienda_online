@@ -96,6 +96,7 @@
             <?php
             // Conectar a la base de datos SQLite
             $db = new SQLite3('./backend/sql/tienda_c.db');
+            //$db = new SQLite3('./backend/sql/tienda.db');
 
             // Realizar la consulta para obtener todos los productos
             $resultado = $db->query('SELECT * FROM producto;');
