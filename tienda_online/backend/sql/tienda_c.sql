@@ -66,9 +66,16 @@ CREATE TABLE cliente (
 CREATE TABLE empleado (
     id_empleado INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
     nombre VARCHAR(100) NOT NULL,
+    apellido_paterno VARCHAR(50) NOT NULL,
+    apellido_materno VARCHAR(50) NOT NULL,
+    telefono VARCHAR(10) NULL,
+    direccion TEXT NULL,
     puesto VARCHAR(50) NOT NULL,
-    usuario VARCHAR(50) UNIQUE NOT NULL,
-    contrasena VARCHAR(256) NOT NULL -- Hasheada para mayor seguridad
+    foto VARCHAR(300) NULL,
+    usuario VARCHAR(100) UNIQUE NOT NULL,
+    correo VARCHAR(100) UNIQUE NOT NULL,
+    contrasena VARCHAR(256) NOT NULL, -- Hasheada para mayor seguridad
+    fecha_ingreso TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
 
 -- Tabla para proveedores
@@ -124,11 +131,11 @@ INSERT INTO metodo_pago (metodo) VALUES
 
 -- Ejemplo de productos
 INSERT INTO producto (producto, precio_venta, existencias, descripcion, ruta_imagen, id_categoria) VALUES 
-    ('Boing', 6.50, 20, 'Producto líquido de 250 ml.', '../../frontend/imagenes/boing.jpg', 1),
-    ('Barritas', 10, 20, 'Galletas de 125g.', '../../frontend/imagenes/barritas.jpg', 2),
-    ('Jarrito 2L', 19, 20, 'Producto líquido de 2 l.', '../../frontend/imagenes/jarrito.jpg', 1),
-    ('Coca Cola 600 ml', 13.50, 10, 'Producto líquido de 600 ml.', '../../frontend/imagenes/coca_cola.jpg', 1),
-    ('Aceite cristal', 15, 10, 'Producto líquido de 500 ml.', '../../frontend/imagenes/aceite.jpg', 3);
+    ('Boing', 6.50, 20, 'Producto líquido de 250 ml.', '../../frontend/imagenes/productos/boing.jpg', 1),
+    ('Barritas', 10, 20, 'Galletas de 125g.', '../../frontend/imagenes/productos/barritas.jpg', 2),
+    ('Jarrito 2L', 19, 20, 'Producto líquido de 2 l.', '../../frontend/imagenes/productos/jarrito.jpg', 1),
+    ('Coca Cola 600 ml', 13.50, 10, 'Producto líquido de 600 ml.', '../../frontend/imagenes/productos/coca_cola.jpg', 1),
+    ('Aceite cristal', 15, 10, 'Producto líquido de 500 ml.', '../../frontend/imagenes/productos/aceite.jpg', 3);
 
 -- Ejemplo de promociones
 INSERT INTO promocion (descripcion, descuento, fecha_inicio, fecha_fin) VALUES 
@@ -139,8 +146,8 @@ INSERT INTO cliente (nombre, correo, telefono, direccion) VALUES
     ('Juan Pérez', 'juan.perez@example.com', '5551234567', 'Calle Falsa 123, Ciudad');
 
 -- Ejemplo de empleado
-INSERT INTO empleado (nombre, puesto, usuario, contrasena) VALUES 
-    ('Ana Gómez', 'Cajera', 'ana_gomez', 'hashed_password');
+INSERT INTO empleado (nombre, apellido_paterno, apellido_materno, telefono, direccion, puesto, foto, usuario, correo, contrasena) VALUES
+    ('Brandon', 'Balderas', 'Lucas', '7753000065', 'calle falsa 123, ciudad', 'administrador', '../../frontend/imagenes/usuario/brandon.jpg', 'brandon', 'patolucas.bbl@gmail.com', 'contrasena123');
 
 -- Ejemplo de proveedor
 INSERT INTO proveedor (nombre, telefono, correo, direccion) VALUES 

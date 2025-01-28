@@ -110,21 +110,23 @@
                     $existencias = $row['existencias'];
                     $descripcion = $row['descripcion'];
                     $ruta_imagen = $row['ruta_imagen']; // Ruta de la imagen
-                    // Crear una tarjeta para cada producto
-                    echo '
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <img src="' . htmlspecialchars($ruta_imagen) . '" class="card-img-top" alt="' . htmlspecialchars($nombre) . '">
-                        <div class="card-body">
-                            <h5 class="card-title">' . htmlspecialchars($nombre) . '</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Precio: $' . htmlspecialchars($precio_venta) . '</h6>
-                            <p class="card-text">' . htmlspecialchars($descripcion) . '</p>
-                            <p class="card-text"><strong>Existencias:</strong> ' . htmlspecialchars($existencias) . '</p>
-                            <a href="../frontend/templates/producto.php?id_producto=' . htmlspecialchars($id_producto) . '" class="btn btn-primary">Ver más</a>
+                    // Crear una tarjeta para cada producto si hay en existencias o si existencias es mayor a 0
+                    if ($existencias > 0) {
+                            echo '
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100">
+                                <img src="' . htmlspecialchars($ruta_imagen) . '" class="card-img-top" alt="' . htmlspecialchars($nombre) . '">
+                                <div class="card-body">
+                                    <h5 class="card-title">' . htmlspecialchars($nombre) . '</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">Precio: $' . htmlspecialchars($precio_venta) . '</h6>
+                                    <p class="card-text">' . htmlspecialchars($descripcion) . '</p>
+                                    <p class="card-text"><strong>Existencias:</strong> ' . htmlspecialchars($existencias) . '</p>
+                                    <a href="../frontend/templates/producto.php?id_producto=' . htmlspecialchars($id_producto) . '" class="btn btn-primary">Ver más</a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                ';
+                        ';
+                    }
                 }
             } else {
                 echo '<p class="text-center">No se encontraron productos en la base de datos.</p>';
