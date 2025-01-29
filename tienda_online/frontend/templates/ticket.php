@@ -117,7 +117,7 @@ try {
                 $lines = explode("\n", $carrito);
                 foreach ($lines as $line) {
                     if (trim($line) !== "") {
-                        echo "<li>$line</li>";
+                        echo "<p>$line</p>";
                     }
                 }
             ?>

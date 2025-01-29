@@ -31,21 +31,6 @@
     <link rel="stylesheet" type="text/css" href="../../backend/css/styles.css">
     <script type="text/javascript" src="../../backend/js/carrito.js"></script>
     <script type="text/javascript" src="../../backend/js/sweetalert2.all.min.js"></script>
-    <script>
-      function togglePagoEfectivo() {
-      const metodoPago = document.getElementById('metodo_pago').value;
-      const efectivoDiv = document.getElementById('efectivo_div');
-      
-      // Mostrar el campo si el id_metodo es 1 (Efectivo) o 2 (Transferencia)
-      if (metodoPago === '1' || metodoPago === '4') {
-        efectivoDiv.style.display = 'block';
-      } else {
-        efectivoDiv.style.display = 'none';
-      }
-    }
-
-    </script>
-
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -61,14 +46,14 @@
             <a href="../../index.php" class="nav-item nav-link active"><i class="fa fa-fw fa-home"></i> Home</a>
             <a href="../crud_tienda/insertar_productos.php" class="nav-item nav-link"><i class="fa fa-fw fa-pencil-square-o"></i> Insertar Productos</a>
           </div>
-          <h1 class="text-light mb-0 mx-auto">Compras</h1>
+          <h1 class="text-light mb-0 mx-auto">Ventas</h1>
           <div class="navbar-nav dropdown">
             <a href="#" class="nav-link dropdown-toggle text-light" id="userMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <img src="<?php echo $foto; ?>" alt="Foto de perfil" class="rounded-circle" height="40" width="40">
               <span><?php echo $nombre . " " . $apellido; ?></span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userMenu">
-              <a class="dropdown-item" href="#"><i class="fa fa-user-circle"></i> Ver Perfil</a>
+              <a class="dropdown-item text-primary" href="#"><i class="fa fa-user-circle"></i> Ver Perfil</a>
               <a class="dropdown-item text-danger" href="logout.php"><i class="fa fa-sign-out"></i> Cerrar Sesión</a>
             </div>
           </div>
@@ -79,7 +64,7 @@
     <div class="container mt-4">
       <div class="jumbotron text-center">
         <h2 class="mb-4">ABARROTES BALDERAS</h2>
-        <form method="POST" action="ticket.php" target="_blank" name="tienda">
+        <form method="POST" action="ticket.php" target="_blank" name="tienda" onsubmit="return validateForm()">
           <h3 class="mb-3">Productos</h3>
           <div class="form-group">
             <label for="producto">Lista de productos (selecciona uno):</label>
@@ -135,7 +120,7 @@
             <input type="number" class="form-control" id="pago" name="pago" placeholder="Ingresa el monto recibido">
           </div>
 
-          <button type="submit" class="btn btn-info" onclick="validateForm()">Pagar</button>
+          <button type="submit" class="btn btn-info">Pagar</button>
         </form>
       </div>
     </div>
