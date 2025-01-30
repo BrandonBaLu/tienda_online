@@ -1,20 +1,20 @@
 <?php
-    include "conexion.php";
+include 'conexion.php';
 
-    //$sesion = $_SESSION["id_empleado"];
-    //$empelado = $db->query("SELECT * from empleado where id_empleado = $sesion");
-    $empelado = $db->query("SELECT * from empleado where id_empleado = 1");
-    $resultado = $db->query("SELECT * from producto");
-    $pago = $db->query("SELECT * from metodo_pago");
+// $sesion = $_SESSION["id_empleado"];
+// $empelado = $db->query("SELECT * from empleado where id_empleado = $sesion");
+$empelado = $db->query('SELECT * from empleado where id_empleado = 1');
+$resultado = $db->query('SELECT * from producto');
+$pago = $db->query('SELECT * from metodo_pago');
 
-    while ($row = $empelado->fetchArray()) {
-      $id_empleado = $row["id_empleado"];
-      $nombre = $row["nombre"];
-      $apellido = $row["apellido_paterno"];
-      $apellido2 = $row["apellido_materno"];
-      $foto = $row["foto"];
-      $puesto = $row["puesto"];
-    }
+while ($row = $empelado->fetchArray()) {
+  $id_empleado = $row['id_empleado'];
+  $nombre = $row['nombre'];
+  $apellido = $row['apellido_paterno'];
+  $apellido2 = $row['apellido_materno'];
+  $foto = $row['foto'];
+  $puesto = $row['puesto'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +50,7 @@
           <div class="navbar-nav dropdown">
             <a href="#" class="nav-link dropdown-toggle text-light" id="userMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <img src="<?php echo $foto; ?>" alt="Foto de perfil" class="rounded-circle" height="40" width="40">
-              <span><?php echo $nombre . " " . $apellido; ?></span>
+              <span><?php echo $nombre . ' ' . $apellido; ?></span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userMenu">
               <a class="dropdown-item text-primary" href="#"><i class="fa fa-user-circle"></i> Ver Perfil</a>
@@ -70,16 +70,16 @@
             <label for="producto">Lista de productos (selecciona uno):</label>
             <select class="form-control" id="producto" name="producto">
               <option value="0" selected>Selecciona un producto</option>
-              <?php 
-                while ($row = $resultado->fetchArray()) {
-                  $id = $row['id_producto'];
-                  $producto = $row['producto'];
-                  $precio = $row['precio_venta'];
-                  $existencias = $row['existencias'];
-                  if ($existencias > 0) {
-                    echo "<option data-id='$id' value='$precio'>$producto</option>";
-                  }
+              <?php
+              while ($row = $resultado->fetchArray()) {
+                $id = $row['id_producto'];
+                $producto = $row['producto'];
+                $precio = $row['precio_venta'];
+                $existencias = $row['existencias'];
+                if ($existencias > 0) {
+                  echo "<option data-id='$id' value='$precio'>$producto</option>";
                 }
+              }
               ?>
             </select>
 
@@ -105,12 +105,12 @@
             <label for="metodo_pago">Método de pago:</label>
             <select class="form-control" id="metodo_pago" name="metodo_pago" onchange="togglePagoEfectivo()">
               <option value="">Selecciona un método de pago</option>
-              <?php 
-                while ($row = $pago->fetchArray()) {
-                  $id_metodo = $row['id_metodo'];
-                  $metodo_pago = $row['metodo'];
-                  echo "<option value='$id_metodo'>$metodo_pago</option>";
-                }
+              <?php
+              while ($row = $pago->fetchArray()) {
+                $id_metodo = $row['id_metodo'];
+                $metodo_pago = $row['metodo'];
+                echo "<option value='$id_metodo'>$metodo_pago</option>";
+              }
               ?>
             </select>
           </div>
@@ -118,6 +118,32 @@
           <div class="form-group" id="efectivo_div" style="display: none;">
             <label for="pago">Pago:</label>
             <input type="number" class="form-control" id="pago" name="pago" placeholder="Ingresa el monto recibido">
+          </div>
+
+          <!-- Modal de Transferencia Bancaria -->
+          <div class="modal fade" id="transferenciaModal" tabindex="-1" role="dialog" aria-labelledby="transferenciaModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="transferenciaModalLabel">Pago por Transferencia Bancaria</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p><strong>Titular:</strong> Abarrotes BaLu</p>
+                  <p><strong>No. de Cuenta:</strong> 123456789</p>
+                  <p><strong>Banco:</strong> Bancomer</p>
+                  <p><strong>Clave de pago:</strong> 1234</p>
+                  <p><strong>Importe a pagar:</strong> $<span id="totalCompraTransferencia"></span></p>
+                  <p><strong>Importe recibido:</strong> $<span id="pagoTransferencia"></span></p>
+                  <button type="submit" class="btn btn-info">Pagar</button>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+              </div>
+            </div>
           </div>
 
           <button type="submit" class="btn btn-info">Pagar</button>
